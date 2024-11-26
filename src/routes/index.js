@@ -17,6 +17,14 @@ const Router = [
   {
     method: "POST",
     path: "/send-message",
+    options: {
+      payload: {
+        maxBytes: 10485760,
+        output: "stream",
+        parse: true,
+        multipart: true,
+      },
+    },
     handler: sendMessage,
   },
 ];

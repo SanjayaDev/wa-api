@@ -1,3 +1,4 @@
 app.zip
 node_modules
 wa_credentials
+/public/uploads
