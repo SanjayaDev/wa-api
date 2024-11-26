@@ -2,6 +2,7 @@ const whatsapp = require("wa-multi-session");
 const response = require("../utils/ResponseJson");
 const path = require("path");
 const fs = require("fs");
+const ErrorLog = require("../utils/ErrorLog");
 
 const sendMessage = async (request, h) => {
   try {
@@ -65,7 +66,7 @@ const sendMessage = async (request, h) => {
 
     return h.response(response).code(200);
   } catch (e) {
-    console.log(e);
+    ErrorLog(e.stack);
     return h.response({ message: "Terjadi kesalahan server!" }).code(500);
   }
 }

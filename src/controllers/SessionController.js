@@ -1,5 +1,6 @@
 const whatsapp = require("wa-multi-session");
 const { toDataURL } = require("qrcode");
+const ErrorLog = require("../utils/ErrorLog");
 
 const startSession = async (request, h) => {
   try {
@@ -26,7 +27,7 @@ const startSession = async (request, h) => {
       })
     });
   } catch(e) {
-    console.log(e);
+    ErrorLog(e.stack);
     return h.response({ message: "Error Server!" }).code(500);
   }
 }
