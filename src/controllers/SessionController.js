@@ -31,10 +31,23 @@ const startSession = async (request, h) => {
   }
 }
 
-const getStatusSession = async (request, h) => {
-  
+const deleteSession = async (request, h) => {
+  const sessionId = request.payload.session_id;
+
+  if (!sessionId) {
+    return h
+      .response({
+        message: "Session ID is required",
+      })
+      .code(400);
+  }
+
+  whatsapp.deleteSession(sessionId);
+
+  return h.response({ message: "Success delete session" }).code(200);
 }
 
 module.exports = {
   startSession,
-}
+  deleteSession,
+};

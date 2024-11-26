@@ -1,4 +1,4 @@
-const { startSession } = require("../controllers/SessionController");
+const { startSession, deleteSession } = require("../controllers/SessionController");
 const { sendMessage } = require("../controllers/MessageController");
 
 const Router = [
@@ -26,6 +26,12 @@ const Router = [
       },
     },
     handler: sendMessage,
+  },
+
+  {
+    method: "DELETE",
+    path: "/destroy-session",
+    handler: deleteSession,
   },
 ];
 
