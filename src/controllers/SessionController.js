@@ -26,6 +26,7 @@ const startSession = async (request, h) => {
       })
     });
   } catch(e) {
+    console.log(e);
     return h.response({ message: "Error Server!" }).code(500);
   }
 }
